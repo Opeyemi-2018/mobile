@@ -5,13 +5,15 @@ import authRoutes from "./routes/authRoutes.js";
 import bookRoutes from "./routes/bookRoutes.js";
 import dotenv from "dotenv";
 import { connectDb } from "./libs/db.js";
-connectDb;
+import job from "./libs/cron.js";
+
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+job.start()
 // Middleware
 app.use(express.json());
 app.use(cors());
